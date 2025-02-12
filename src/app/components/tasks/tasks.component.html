@@ -1,0 +1,100 @@
+<div class="tasks-container">
+  <div class="tasks-section">
+    <h2>Task Management</h2>
+    
+    <div class="add-task-form">
+      <input 
+        type="text" 
+        [(ngModel)]="newTask" 
+        placeholder="Add new task..."
+        (keyup.enter)="addTask()"
+      >
+      <button (click)="addTask()">Add Task</button>
+    </div>
+
+    <table class="tasks-table">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Task</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks" [class.completed]="task.completed">
+          <td>
+            <input 
+              type="checkbox" 
+              [checked]="task.completed"
+              (change)="toggleTask(task)"
+            >
+          </td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.date | date:'short' }}</td>
+          <td>
+            <button class="delete-btn" (click)="deleteTask(task)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="blog-section">
+    <h2>Latest Updates</h2>
+    <div class="blog-cards">
+      <div class="blog-card">
+        <h3>Getting Started with Task Management</h3>
+        <p class="date">March 15, 2024</p>
+        <p>Learn how to effectively manage your tasks and increase productivity with our simple task management system.</p>
+        <a href="#">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Best Practices for Task Organization</h3>
+        <p class="date">March 14, 2024</p>
+        <p>Discover the best ways to organize your tasks and maintain a clean, efficient workflow.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.tasks-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #b8c6db 100%);
+  padding: 2rem;
+}
+
+.tasks-section, .blog-section {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.tasks-table {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.add-task-form input, .add-task-form button {
+  border-radius: 8px;
+}
+</style> 

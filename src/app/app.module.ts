@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -17,14 +18,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { AboutComponent } from './components/about/about.component';
-import { LoginComponent } from './components/login/login.component'; // Import LoginComponent
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service'; // Import AuthService
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'tasks', component: TasksComponent },
   { path: 'about', component: AboutComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }, // Add login route
+  { path: 'login', component: LoginComponent },
   // Add other routes here
 ];
 
@@ -35,12 +37,13 @@ const routes: Routes = [
     HomeComponent,
     TasksComponent,
     AboutComponent,
-    LoginComponent, // Declare LoginComponent
-    // other components
+    LoginComponent,
+    // Declare other components here
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule, // Import HttpClientModule
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -51,9 +54,8 @@ const routes: Routes = [
     MatInputModule,
     FormsModule,
     RouterModule.forRoot(routes)
-    // other modules
   ],
-  providers: [],
+  providers: [AuthService], // Provide AuthService
   bootstrap: [AppComponent]
 })
 export class AppModule { }

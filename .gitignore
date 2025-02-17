@@ -1,1 +1,66 @@
-node_modules
+# Node.js dependencies
+node_modules/
+
+# Angular build output
+dist/
+build/
+
+# Environment files
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Pack files
+*.pack
+*.pack.*
+
+# Babel files
+.babelrc
+.babelrc.js
+.babelrc.json
+babel.config.js
+babel.config.json
+
+# Webpack files
+webpack.config.js
+webpack.config.ts
+webpack.config.common.js
+webpack.config.common.ts
+webpack.config.dev.js
+webpack.config.dev.ts
+webpack.config.prod.js
+webpack.config.prod.ts
+
+# Other build-related files
+.yarn/
+.pnp.*
+.cache/
+.parcel-cache/
+.nyc_output/
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Angular specific
+.angular/
+.angular-cli.json
+.angular.json
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Miscellaneous
+.DS_Store
+Thumbs.db

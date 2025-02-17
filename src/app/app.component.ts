@@ -13,7 +13,7 @@ interface Task {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Task Manager App';
+  title = 'Task Manager';
   tasks: Task[] = [];
   newTask: string = '';
 

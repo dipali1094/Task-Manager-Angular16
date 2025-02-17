@@ -1,80 +1,38 @@
 <div class="register-container">
-  <div class="logo-container">
-    <img src="https://cdn-icons-png.flaticon.com/512/6194/6194029.png" alt="Task Manager" class="logo">
-    <span>Task Manager</span>
-  </div>
+  <mat-card class="register-card">
+    <mat-card-header>
+      <mat-card-title>Create Account</mat-card-title>
+      <mat-card-subtitle>Join us to start managing your tasks</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-form">
+        <mat-form-field appearance="fill" class="form-group">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" id="email" name="email" [(ngModel)]="email" required email placeholder="Enter your email">
+        </mat-form-field>
 
-  <div class="register-card">
-    <h2>Create Account</h2>
-    <p class="subtitle">Join us to start managing your tasks</p>
+        <mat-form-field appearance="fill" class="form-group">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Create a password">
+        </mat-form-field>
 
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-form">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          [(ngModel)]="email"
-          required
-          email
-          placeholder="Enter your email"
-        >
-      </div>
+        <mat-form-field appearance="fill" class="form-group">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required placeholder="Confirm your password">
+        </mat-form-field>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          [(ngModel)]="password"
-          required
-          placeholder="Create a password"
-        >
-      </div>
+        <div class="error-message" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
 
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          [(ngModel)]="confirmPassword"
-          required
-          placeholder="Confirm your password"
-        >
-      </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid" class="submit-button">
+          Create Account
+        </button>
 
-      <div class="error-message" *ngIf="errorMessage">
-        {{ errorMessage }}
-      </div>
-
-      <button type="submit" [disabled]="!registerForm.valid">
-        Create Account
-      </button>
-
-      <p class="login-link">
-        Already have an account? <a routerLink="/login">Sign in</a>
-      </p>
-    </form>
-  </div>
+        <p class="login-link">
+          Already have an account? <a routerLink="/login">Sign in</a>
+        </p>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
-
-<style>
-.register-container {
-  min-height: 100vh;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.register-card {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-</style> 
